@@ -1,0 +1,69 @@
+Crops Name,Diseases,Pesticides,Quantity,Area,Volume
+,,,,,
+Bean,Bean Angular Leaf Spot,azoxystrobin,1.5 ml,100 square feet,0.15 mL/L
+,,propiconazole,2.0 ml,100 square feet,0.20 mL/L
+,,flutriafol,2.25 ml,100 square feet,0.23 mL/L
+,,azoxystrobin + trifloxystrobin,1.5 ml,100 square feet,0.15 mL/L
+,,,,,
+,Bean Rust,azoxystrobin,1.25ml,100 square feet,30 mL/L
+,,propiconazole,1.50ml,100 square feet,45 mL/L
+,,flutriafol,1.75ml,100 square feet,50 mL/L
+,,trifloxystrobin + pyraclostrobin,1.25ml,100 square feet,30 mL/L
+,,azoxystrobin + trifloxystrobin,1.25ml,100 square feet,30 mL/L
+,,,,,
+,,,,,
+Tomato,Tomato Bacterial Spot,Copper hydroxide,44.35 ml,100 square feet,39-59 mL/L
+,,Serenade ASO,14.75 ml,100 square feet,11.8 mL/L
+,,"Copper, sulfur, and neem oil",29.57 ml,100 square feet,29.57 mL/L
+,,,,,
+,,,,,
+,Tomato Early Blight,Serenade ASO,14.78-29.57 ml,100 square feet,5.3-10.6 ml/L
+,,Copper hydroxide,29.57-59.14 ml,100 square feet,10.6-21.2 ml/L
+,,Mancozeb,29.57-44.36 ml,100 square feet,10.6-15.9 ml/L
+,,,,,
+,,,,,
+,Tomato Late Blight,Serenade ASO,44.36-88.72 ml,100 square feet,12.5-25 ml/L
+,,Copper hydroxide	,29.57-59.14 ml,100 square feet,40-80 ml/L
+,,Mancozeb,29.57-44.36 ml,100 square feet,40-60 ml/L
+,,trifloxystrobin + pyraclostrobin,36.96-73.93 ml,100 square feet,30ml/L
+,,,,,
+,,,,,
+,Tomato Leaf Mold,Serenade ASO,14.78-29.57 ml,100 square feet,28.4 ml/L
+,,Mancozeb,29.57-44.36 ml,100 square feet,81.5 ml/L
+,,Copper hydroxide,29.57-59.14 ml,100 square feet,57.9 ml/L
+,,,,,
+,,,,,
+,,,,,
+,Tomato Septoria Leaf Spot,azoxystrobin,36.96 ml,100 square feet,15 mL/L
+,,propiconazole,44.36 ml,100 square feet,20 mL/L
+,,flutriafol,51.75 ml,100 square feet,27.5 mL/L
+,,Copper hydroxide,59.14 ml,100 square feet,57.9 ml/L
+,,,,,
+,,,,,
+,Tomato Spider Mites,bifenthrin,29.57-36.96 ml,100 square feet,14-21 ml/L
+,,permethrin,7.40-14.78 ml,100 square feet,14.8-29.6 ml/L
+,,spinosad,14.78-29.57 ml,100 square feet,14 ml/L
+,,insecticidal soap,29.57-59.14 ml,100 square feet,29.6 ml/L
+,,spinosad,29.57 ml,100 square feet,14 ml/L
+,,,,,
+,Tomato Target Spot,Serenade ASO,7.40-59.14 ml,100 square feet,10.9-21.8 ml/L
+,,Copper hydroxide,29.57-59.14 ml,100 square feet,21.8-43.6 ml/L
+,,Mancozeb,29.57-44.36 ml,100 square feet,21.8-32.7 ml/L
+,,,,,
+,,,,,
+,,,,,
+,Tomato Mosaic Virus,Serenade ASO,14.78 ml,100 square feet,7-14 ml/L
+,,Azadirachtin,29.57 ml,100 square feet,3.5-7 ml/L
+,,mancozeb,44.36 ml,100 square feet,14-21 ml/L
+,,,,,
+,,,,,
+,Tomato Yellow Leaf Curl Virus,Serenade ASO,14.78-29.57 ml,100 square feet,7-14 ml/L
+,,Copper hydroxide,29.57-59.14 ml,100 square feet,57.9 ml/L
+,,mancozeb,29.57-59.14 ml,100 square feet,14-21 ml/L
+,,,,,
+,,,,,
+,,,,,
+,Two-Spotted Spider Mite,Spinosad,14.78-29.57 ml,100 square feet,7 ml/L
+,,abamectin,29.57-59.14 ml,100 square feet,7 ml/L
+,,permethrin,14.78-29.57 ml,100 square feet,14 ml/L
+,,Azadirachtin,14.78-29.57 ml,100 square feet,20 ml/L

@@ -1,33 +1,28 @@
-from fastapi import FastAPI, HTTPException, UploadFile
-import tensorflow as tf
-import numpy as np
-from PIL import Image
-import io
-import psycopg2
-from PIL import Image
+import pandas as pd
 
-app = FastAPI()
+file_path = 'Crops diseases information.xlsx'
+df = pd.read_excel(file_path)
 
-model = tf.keras.models.load_model("model_dis.hdf5")
-class_names = ['Bean_angular_leaf_spot', 'Bean_bean_rust', 'Rice_Bacterial leaf blight', 'Rice_Brown_Spot', 'Rice_Healthy', 'Rice_Hispa', 'Rice_Leaf smut', 'Rice_Leaf_Blast', 'Wheat_Brown_Rust', 'Wheat_Healthy', 'Wheat_Yellow_Rust']
+data_dict = {}
+for index, row in df.iterrows():
+    disease = row['Diseases']
+    pesticide = row['Pesticides']
+    quantity = row['Quantity']
+    area = row['Area']
+    volume = row['Volume']
 
-def save_prediction_to_database(prediction, confidence):
-    conn = psycopg2.connect(
-        host="localhost",
-        database="imagepredictor",
-        user="sagore",
-        password="sagore"
-    )
+    if disease not in data_dict:
+        data_dict[disease] = []
 
-    cur = conn.cursor()
+    data_dict[disease].append({
+        'Pesticide': pesticide,
+        'Quantity': quantity,
+        'Area': area,
+        'Volume': volume
+    })
 
-    cur.execute("INSERT INTO predictions (prediction, confidence) VALUES (%s, %s)", (prediction, confidence))
 
-    conn.commit()
-
-    cur.close()
-    conn.close()
-
+print(data_dict)
 
 data_dict = {
     'Bean Angular Leaf Spot': [
@@ -262,59 +257,24 @@ data_dict = {
         },
     ],
     'Two-Spotted Spider Mite': [{
-            'Pesticide': 'Spinosad',
-            'Quantity': '14.78-29.57 ml',
-            'Area': '100 square feet',
-            'Volume': '7 ml/L'
-        },  {
-            'Pesticide': 'abamectin',
-            'Quantity': '29.57-59.14 ml',
-            'Area': '100 square feet',
-            'Volume': '7 ml/L'
-        }, {
-            'Pesticide': 'permethrin',
-            'Quantity': '14.78-29.57 ml',
-            'Area': '100 square feet',
-            'Volume': '14 ml/L'
-        }, {
-            'Pesticide': 'Azadirachtin',
-            'Quantity': '14.78-29.57 ml',
-            'Area': '100 square feet',
-            'Volume': '20 ml/L'
-        }],
+        'Pesticide': 'Spinosad',
+        'Quantity': '14.78-29.57 ml',
+        'Area': '100 square feet',
+        'Volume': '7 ml/L'
+    },  {
+        'Pesticide': 'abamectin',
+        'Quantity': '29.57-59.14 ml',
+        'Area': '100 square feet',
+        'Volume': '7 ml/L'
+    }, {
+        'Pesticide': 'permethrin',
+        'Quantity': '14.78-29.57 ml',
+        'Area': '100 square feet',
+        'Volume': '14 ml/L'
+    }, {
+        'Pesticide': 'Azadirachtin',
+        'Quantity': '14.78-29.57 ml',
+        'Area': '100 square feet',
+        'Volume': '20 ml/L'
+    }],
 }
-
-
-
-@app.post("/predict")
-async def predict(file: UploadFile):
-    try:
-        image = Image.open(io.BytesIO(await file.read()))
-        image = image.convert("RGB")
-        resized_image = image.resize((224, 224))
-        img_array = tf.keras.preprocessing.image.img_to_array(resized_image)
-        img_array = np.expand_dims(img_array, 0)
-        predictions = model.predict(img_array)
-        predicted_class = class_names[np.argmax(predictions[0])]
-        confidence = round(100 * np.max(predictions[0]), 2)
-
-        # Save the prediction to the database
-        #save_prediction_to_database(predicted_class, confidence)
-
-        words = predicted_class.split('_')
-
-        predicted_class = ' '.join(word.capitalize() for word in words)
-
-        if predicted_class in data_dict:
-            class_data = data_dict[predicted_class]
-        else:
-            class_data = {}
-
-        return {
-            "prediction": predicted_class,
-            "confidence": confidence,
-            "class_data":class_data,
-            }
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
