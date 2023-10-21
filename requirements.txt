@@ -5,3 +5,4 @@ numpy
 Pillow
 psycopg2
 python-multipart
+requests
