@@ -417,8 +417,6 @@ async def predict_image_url(image_url: str):
 
         result_data = {
             "prediction": predicted_class,
-            "confidence": confidence,
-            "class_data": class_data,
         }
 
         filename = data_saver.save_data(result_data)
