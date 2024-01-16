@@ -29,22 +29,22 @@ class_names = [
 ]
 
 
-def save_prediction_to_database(prediction, confidence):
-    conn = psycopg2.connect(
-        host="localhost", database="imagepredictor", user="sagore", password="sagore"
-    )
+# def save_prediction_to_database(prediction, confidence):
+#     conn = psycopg2.connect(
+#         host="localhost", database="imagepredictor", user="sagore", password="sagore"
+#     )
 
-    cur = conn.cursor()
+#     cur = conn.cursor()
 
-    cur.execute(
-        "INSERT INTO predictions (prediction, confidence) VALUES (%s, %s)",
-        (prediction, confidence),
-    )
+#     cur.execute(
+#         "INSERT INTO predictions (prediction, confidence) VALUES (%s, %s)",
+#         (prediction, confidence),
+#     )
 
-    conn.commit()
+#     conn.commit()
 
-    cur.close()
-    conn.close()
+#     cur.close()
+#     conn.close()
 
 
 @app.post("/predict")
@@ -72,6 +72,7 @@ async def predict(file: UploadFile):
 
         result_data = {
             "prediction": predicted_class,
+            "confidence": confidence,
         }
 
         filename = data_saver.save_data(result_data)
@@ -111,6 +112,7 @@ async def predict_image_url(image_url: str):
 
         result_data = {
             "prediction": predicted_class,
+            "confidence": confidence,
         }
 
         filename = data_saver.save_data(result_data)
